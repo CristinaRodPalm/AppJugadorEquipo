@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Basketball</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_log_in">Log in</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_username_or_password">Username or password are  incorrect</string>
+    <string name="error_field_required">This field is required</string>
+
+
+    <string name="title_player_list">Players</string>
+    <string name="title_player_detail">Player Detail</string>
+
+    <string name="all_players_list">View players List</string>
+    <string name="all_teams_list">View teams list</string>
+</resources>
