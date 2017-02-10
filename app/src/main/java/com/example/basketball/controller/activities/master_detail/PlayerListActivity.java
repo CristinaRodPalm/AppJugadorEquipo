@@ -134,9 +134,11 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerCallb
                 return super.toString() + " '" + nombrePlayer.getText() + "'";
             }
         }
+
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.playerSeleccionado = players.get(position);
+            final String playerID = holder.playerSeleccionado.getId().toString();
             holder.idPlayer.setText(players.get(position).getId().toString());
             holder.nombrePlayer.setText(players.get(position).getName()+" "+players.get(position).getSurname());
 
@@ -145,7 +147,7 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerCallb
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(PlayerDetailFragment.ARG_ITEM_ID, holder.playerSeleccionado.getId().toString());
+                        arguments.putString(PlayerDetailFragment.ARG_ITEM_ID, playerID);
                         PlayerDetailFragment fragment = new PlayerDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -154,7 +156,7 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerCallb
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, PlayerDetailActivity.class);
-                        intent.putExtra(PlayerDetailFragment.ARG_ITEM_ID, holder.playerSeleccionado.getId().toString());
+                        intent.putExtra(PlayerDetailFragment.ARG_ITEM_ID, playerID);
 
                         context.startActivity(intent);
                     }

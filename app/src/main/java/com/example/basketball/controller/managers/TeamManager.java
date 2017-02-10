@@ -75,15 +75,25 @@ public class TeamManager {
         });
     }
 
-    public synchronized void getTeam(Long id, final TeamCallback teamCallback){
-        Call<Team> callGetTeam = teamService.getTeam(id, UserLoginManager.getInstance(context).getBearerToken());
-        callGetTeam.enqueue(new Callback<Team>() {
+    public Team getTeam(String id) {
+        for (Team team: teams){
+            if(team.getId().toString().equals(id)){
+                return team;
+            }
+        }
+        return null;
+    }
+
+    public synchronized void createTeam(final TeamCallback teamCallback,Team team) {
+        Call<Team> call = teamService.createTeam(UserLoginManager.getInstance(context).getBearerToken(), team);
+        call.enqueue(new Callback<Team>() {
             @Override
             public void onResponse(Call<Team> call, Response<Team> response) {
-                Team team = response.body();
                 int code = response.code();
+
                 if (code == 200 || code == 201) {
-                    teamCallback.onSuccess(team);
+                    Log.e("Team->","updateTeam: " + Integer.toString(code));
+
                 } else {
                     teamCallback.onFailure(new Throwable("ERROR" + code + ", " + response.raw().message()));
                 }
@@ -91,20 +101,11 @@ public class TeamManager {
 
             @Override
             public void onFailure(Call<Team> call, Throwable t) {
+                Log.e("TeamManager->",  t.toString());
 
+                teamCallback.onFailure(t);
             }
         });
-
-    }
-
-    public Team getTeam(String id) {
-        for (Team team: teams){
-            if(team.getId().toString().equals(id)){
-                return team;
-            }
-        }
-
-        return null;
     }
 
 }

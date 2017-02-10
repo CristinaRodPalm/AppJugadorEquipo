@@ -26,7 +26,7 @@ public class PlayerManager {
 
     private PlayerManager(Context cntxt) {
         context = cntxt;
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
                 .create();
         retrofit = new Retrofit.Builder()
                 .baseUrl(CustomProperties.getInstance(context).get("app.baseUrl"))

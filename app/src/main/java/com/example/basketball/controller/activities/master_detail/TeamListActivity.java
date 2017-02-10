@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.basketball.R;
 import com.example.basketball.controller.activities.login.LoginActivity;
+import com.example.basketball.controller.managers.PlayerManager;
 import com.example.basketball.controller.managers.TeamCallback;
 import com.example.basketball.controller.managers.TeamManager;
 import com.example.basketball.model.Team;
@@ -50,8 +51,7 @@ public class TeamListActivity extends AppCompatActivity implements TeamCallback 
         addPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Adding a new Team", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                TeamManager.getInstance(getApplicationContext()).createTeam(TeamListActivity.this, new Team("Nuevo equipo", "japón"));
             }
         });
 
@@ -137,6 +137,7 @@ public class TeamListActivity extends AppCompatActivity implements TeamCallback 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.teamSeleccionado = teams.get(position);
+            final String teamID = holder.teamSeleccionado.getId().toString();
             holder.idTeam.setText(teams.get(position).getId().toString());
             holder.nombreTeam.setText(teams.get(position).getName());
 
@@ -145,16 +146,16 @@ public class TeamListActivity extends AppCompatActivity implements TeamCallback 
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(PlayerDetailFragment.ARG_ITEM_ID, holder.teamSeleccionado.getId().toString());
-                        PlayerDetailFragment fragment = new PlayerDetailFragment();
+                        arguments.putString(TeamDetailFragment.ARG_ITEM_ID, teamID);
+                        TeamDetailFragment fragment = new TeamDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.player_detail_container, fragment)
                                 .commit();
                     } else {
                         Context context = v.getContext();
-                        Intent intent = new Intent(context, PlayerDetailActivity.class);
-                        intent.putExtra(PlayerDetailFragment.ARG_ITEM_ID, holder.teamSeleccionado.getId().toString());
+                        Intent intent = new Intent(context, TeamDetailActivity.class);
+                        intent.putExtra(TeamDetailFragment.ARG_ITEM_ID, teamID);
 
                         context.startActivity(intent);
                     }

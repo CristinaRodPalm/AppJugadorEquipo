@@ -8,7 +8,6 @@ import java.util.Date;
 public class Player {
     private Long id;
     private String name;
-    private Integer baskets;
     private String surname;
     private Date birthdate;
     private Integer numBaskets;
@@ -20,10 +19,9 @@ public class Player {
     public Player() {
     }
 
-    public Player(Long id, String name, Integer baskets, String surname, Date birthdate, Integer numBaskets, Integer numAssists, Integer numRebounds, Position position, Team team) {
+    public Player(Long id, String name, String surname, Date birthdate, Integer numBaskets, Integer numAssists, Integer numRebounds, Position position, Team team) {
         this.id = id;
         this.name = name;
-        this.baskets = baskets;
         this.surname = surname;
         this.birthdate = birthdate;
         this.numBaskets = numBaskets;
@@ -47,14 +45,6 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getBaskets() {
-        return baskets;
-    }
-
-    public void setBaskets(Integer baskets) {
-        this.baskets = baskets;
     }
 
     public String getSurname() {
@@ -111,5 +101,20 @@ public class Player {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", birthdate=" + birthdate +
+                ", numBaskets=" + numBaskets +
+                ", numAssists=" + numAssists +
+                ", numRebounds=" + numRebounds +
+                ", position=" + position +
+                ", team=" + team +
+                '}';
     }
 }

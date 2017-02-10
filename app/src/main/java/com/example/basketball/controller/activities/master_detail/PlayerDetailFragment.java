@@ -31,7 +31,7 @@ public class PlayerDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(player.getName());
+                appBarLayout.setTitle(player.getName()+" "+player.getSurname());
             }
         }
     }
@@ -41,9 +41,14 @@ public class PlayerDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.player_detail, container, false);
 
-        // Show the dummy content as text in a TextView.
         if (player != null) {
-            ((TextView) rootView.findViewById(R.id.player_detail)).setText("Baskets: " + player.getBaskets().toString());
+            String text = "Baskets: " + player.getNumBaskets().toString() +
+                    "\nAssists: " + player.getNumAssists().toString()+
+                    "\nRebounds: " + player.getNumRebounds().toString()+
+                    "\nPosition: " + player.getPosition().toString().toLowerCase()+
+                    "\nTeam: " + player.getTeam().getName();
+            ((TextView) rootView.findViewById(R.id.player_detail)).
+                    setText(text);
         }
 
         return rootView;

@@ -15,9 +15,7 @@ public class FavouritePlayer implements Serializable {
     private User user;
     private Player player;
 
-    public FavouritePlayer(Date favouriteDateTime, User user, Player player) {
-        this.favouriteDateTime = favouriteDateTime;
-        this.user = user;
+    public FavouritePlayer(Player player) {
         this.player = player;
     }
 

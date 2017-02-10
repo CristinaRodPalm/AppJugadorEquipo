@@ -5,8 +5,10 @@ import com.example.basketball.model.Team;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -15,9 +17,6 @@ import retrofit2.http.Path;
 public interface TeamService {
     @GET("/api/teams")
     Call<List<Team>> getAllTeams(
-            /**
-             * "Bearer [space ]token"
-             */
             @Header("Authorization") String Authorization
     );
 
@@ -26,4 +25,10 @@ public interface TeamService {
             @Path("id") Long id,
             @Header("Authorization") String Authorization
     );
+
+    @POST("api/teams")
+    Call<Team> createTeam(
+            @Header("Authorization") String Authorization,
+            @Body Team team);
+
 }

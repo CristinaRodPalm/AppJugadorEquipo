@@ -48,6 +48,16 @@
                 android:value="com.example.basketball.controller.activities.master_detail.TeamListActivity" />
         </activity>
 
+        <activity
+            android:name=".controller.activities.master_detail.TeamDetailActivity"
+            android:label="Team detail activity"
+            android:parentActivityName=".controller.activities.master_detail.TeamDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.basketball.controller.activities.master_detail.TeamDetailActivity" />
+        </activity>
+
 
     </application>
 

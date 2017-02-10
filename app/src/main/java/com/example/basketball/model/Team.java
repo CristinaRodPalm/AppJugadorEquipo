@@ -28,6 +28,10 @@ public class Team implements Serializable {
         this.gameVisitorTeams = gameVisitorTeams;
         this.players = players;
     }
+    public Team(String name, String city) {
+        this.name = name;
+        this.city = city;
+    }
 
     public Long getId() {
         return id;

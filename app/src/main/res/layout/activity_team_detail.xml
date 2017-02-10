@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.basketball.controller.activities.master_detail.PlayerDetailActivity"
+    tools:context="com.example.basketball.controller.activities.master_detail.TeamDetailActivity"
     tools:ignore="MergeRootFrame">
 
     <android.support.design.widget.AppBarLayout
@@ -35,7 +35,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
-        android:id="@+id/player_detail_container"
+        android:id="@+id/team_detail_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
@@ -47,7 +47,8 @@
         android:layout_gravity="center_vertical|start"
         android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/star_big_off"
-        app:layout_anchor="@+id/player_detail_container"
+        app:layout_anchor="@+id/team_detail_container"
         app:layout_anchorGravity="top|end" />
 
 </android.support.design.widget.CoordinatorLayout>
+
