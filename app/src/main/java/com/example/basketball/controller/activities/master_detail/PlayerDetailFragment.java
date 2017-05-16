@@ -34,12 +34,15 @@ public class PlayerDetailFragment extends Fragment {
                 appBarLayout.setTitle(player.getName()+" "+player.getSurname());
             }
         }
+
+        //FavouritePlayerManager.getInstance(getContext()).getFavPlayerExists(PlayerDetailFragment.this, player.getId());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.player_detail, container, false);
+
 
         if (player != null) {
             String text = "Baskets: " + player.getNumBaskets().toString() +

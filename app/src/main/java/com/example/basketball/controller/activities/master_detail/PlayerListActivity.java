@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.basketball.R;
+import com.example.basketball.controller.activities.CreatePlayer;
 import com.example.basketball.controller.activities.login.LoginActivity;
 import com.example.basketball.controller.managers.PlayerCallback;
 import com.example.basketball.controller.managers.PlayerManager;
@@ -35,23 +34,16 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_list);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
-
-        // Show the Up button in the action bar.
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-
-        // La acción del botón flotante -> add player al equipo
+        // La acción del botón flotante -> add player
         FloatingActionButton addPlayer = (FloatingActionButton) findViewById(R.id.addPlayer);
         addPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Adding a new Player", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                // ABRIMOS EL FORM PARA CREAR UN PLAYER
+                Intent i = new Intent(PlayerListActivity.this, CreatePlayer.class);
+                startActivity(i);
             }
         });
 

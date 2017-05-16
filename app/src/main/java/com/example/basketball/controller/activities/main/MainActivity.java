@@ -1,11 +1,10 @@
 package com.example.basketball.controller.activities.main;
 
+import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
+import android.widget.TabHost;
 
 import com.example.basketball.R;
 import com.example.basketball.controller.activities.master_detail.PlayerListActivity;
@@ -13,17 +12,27 @@ import com.example.basketball.controller.activities.master_detail.TeamListActivi
 import com.example.basketball.controller.managers.UserLoginManager;
 import com.example.basketball.model.UserToken;
 
-public class MainActivity extends AppCompatActivity {
-
-    private Button getAllPlayers, getAllTeams;
+public class MainActivity extends TabActivity  {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getAllPlayers = (Button) findViewById(R.id.getAllPlayers);
-        getAllTeams = (Button) findViewById(R.id.getAllTeams);
+        TabHost tabHost = getTabHost();
+        TabHost.TabSpec spec;
+        Intent intent;
+
+        intent = new Intent().setClass(this, PlayerListActivity.class);
+        spec = tabHost.newTabSpec("Players").setIndicator("Players")
+                .setContent(intent);
+        tabHost.addTab(spec);
+
+        intent = new Intent().setClass(this, TeamListActivity.class);
+        spec = tabHost.newTabSpec("Teams").setIndicator("Teams")
+                .setContent(intent);
+        tabHost.addTab(spec);
+
     }
 
     @Override
@@ -32,24 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         UserToken userToken = UserLoginManager.getInstance(this.getApplicationContext()).getUserToken();
 
-        if(userToken == null){
+        if (userToken == null) {
             Log.e("MainActivity->", "onResume ERROR: userToken is NULL");
         }
-
-        getAllPlayers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent getAllPlayers = new Intent(MainActivity.this, PlayerListActivity.class);
-                startActivity(getAllPlayers);
-            }
-        });
-        getAllTeams.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent getAllTeams = new Intent(MainActivity.this, TeamListActivity.class);
-                startActivity(getAllTeams);
-
-            }
-        });
     }
+
 }

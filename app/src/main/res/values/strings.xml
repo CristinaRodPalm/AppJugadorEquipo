@@ -1,15 +1,25 @@
 <resources>
-    <string name="app_name">Basketball</string>
-    <string name="prompt_username">Username</string>
-    <string name="prompt_password">Password</string>
+    <string name="app_name">Liga</string>
+    <string name="prompt_username">Usuario</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="prompt_nombre">Nombre</string>
+    <string name="prompt_apellido">Apellido</string>
+    <string name="prompt_nacimiento">Fecha nacimiento</string>
+    <string name="prompt_canastas">Canastas</string>
+    <string name="prompt_asistencias">Asistencias</string>
+    <string name="prompt_rebotes">Rebotes</string>
+    <string name="prompt_posicion">Posicion</string>
+    <string name="prompt_equipo">Equipo</string>
+
+    <string name="btn_crear_jugador">Crear jugador</string>
+
     <string name="action_log_in">Log in</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_username_or_password">Username or password are  incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="error_invalid_password">Constraseña demasiado corta</string>
+    <string name="error_incorrect_username_or_password">Usuario o contraseña incorrectas</string>
+    <string name="error_field_required">Campo requierido</string>
 
-
-    <string name="title_player_list">Players</string>
-    <string name="title_player_detail">Player Detail</string>
+    <string name="title_player_list">Jugadores</string>
+    <string name="title_player_detail">Detalle del jugador</string>
 
     <string name="all_players_list">View players List</string>
     <string name="all_teams_list">View teams list</string>

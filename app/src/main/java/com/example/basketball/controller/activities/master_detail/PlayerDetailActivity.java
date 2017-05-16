@@ -1,35 +1,21 @@
 package com.example.basketball.controller.activities.master_detail;
 
-import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.UserManager;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 
 import com.example.basketball.R;
-import com.example.basketball.controller.activities.login.LoginActivity;
 import com.example.basketball.controller.managers.FavouritePlayerCallback;
 import com.example.basketball.controller.managers.FavouritePlayerManager;
 import com.example.basketball.controller.managers.PlayerManager;
-import com.example.basketball.controller.managers.UserLoginManager;
 import com.example.basketball.model.FavouritePlayer;
 import com.example.basketball.model.Player;
-import com.example.basketball.model.User;
-import com.example.basketball.model.UserToken;
 
 import java.util.List;
 
@@ -59,10 +45,6 @@ public class PlayerDetailActivity extends AppCompatActivity implements Favourite
             public void onClick(View view) {
                 FavouritePlayerManager.getInstance(getApplicationContext()).
                         createFavouritePlayer(PlayerDetailActivity.this, new FavouritePlayer(player));
-
-
-                //FavouritePlayerManager.getInstance(getApplicationContext()).getFavouritePlayerUser(ARG_ITEM_ID, );
-
             }
         });
 
@@ -90,6 +72,9 @@ public class PlayerDetailActivity extends AppCompatActivity implements Favourite
         }else{
             player = new Player();
         }
+
+        FavouritePlayerManager.getInstance(getApplicationContext()).
+                getFavPlayerExists(PlayerDetailActivity.this, player.getId());
     }
 
     @Override
@@ -118,12 +103,16 @@ public class PlayerDetailActivity extends AppCompatActivity implements Favourite
     }
 
     @Override
-    public void onSuccess(FavouritePlayer favouritePlayer) {}
+    public void onSuccess(FavouritePlayer favouritePlayer) {
+        // SI ESTÁ VOTADO
+        System.out.println(favouritePlayer);
+        if(favouritePlayer != null){
+            Drawable d = getResources().getDrawable(android.R.drawable.star_big_on);
+            fab.setImageDrawable(d);
+        }
+    }
     @Override
     public void onSuccess() {
         System.out.println("HA FUNCIONADO EL CREATE FAVOURITE");
-        // cambiamos el icono
-        Drawable d = getResources().getDrawable(android.R.drawable.star_big_on);
-        fab.setImageDrawable(d);
     }
 }

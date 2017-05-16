@@ -23,6 +23,7 @@ public class FavouritePlayerManager {
     private Context context;
     private FavouritePlayerService favouritePlayerService;
     List<FavouritePlayer> favPlayers;
+    FavouritePlayer favPlayer;
 
     private FavouritePlayerManager(Context cntxt) {
         context = cntxt;
@@ -79,15 +80,31 @@ public class FavouritePlayerManager {
         return null;
     }
 
-    public boolean getFavouritePlayerUser(String playerID, String userID){
-        for (FavouritePlayer favouritePlayer : favPlayers) {
-            if (favouritePlayer.getUser().getId().toString().equals(userID) && favouritePlayer.getPlayer().getId().toString().equals(playerID)) {
-                return true;
-            }
-        }
-        return false;
+    public synchronized void getFavPlayerExists(final FavouritePlayerCallback favouritePlayerCallback, Long id){
+        Call<FavouritePlayer> callFavPlayerExists =
+                favouritePlayerService.getFavouritePlayerExists(id, UserLoginManager.getInstance(context).getBearerToken());
+        callFavPlayerExists.enqueue(new Callback<FavouritePlayer>() {
+            @Override
+            public void onResponse(Call<FavouritePlayer> call, Response<FavouritePlayer> response) {
+                int code = response.code();
 
+                if (code == 200 || code == 201) {
+                    System.out.println("!!!!!!!!!!MANAGER!!!!!!!!!!!!! ->  " + favPlayer);
+                    favouritePlayerCallback.onSuccess(favPlayer);
+                } else {
+                    favouritePlayerCallback.onFailure(new Throwable("ERROR" + code + ", " + response.raw().message()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FavouritePlayer> call, Throwable t) {
+                Log.e("PlayerManager->", "getFavPlayerExists()->ERROR: " + t);
+
+                favouritePlayerCallback.onFailure(t);
+            }
+        });
     }
+
 
     public synchronized void getAllFavouritePlayer(final FavouritePlayerCallback favouritePlayerCallback) {
         Call<List<FavouritePlayer>> callGetAll = favouritePlayerService.getAllFavouritePlayer(UserLoginManager.getInstance(context).getBearerToken());

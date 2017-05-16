@@ -84,4 +84,24 @@ public class PlayerManager {
 
         return null;
     }
+
+    public synchronized void createPlayer(final PlayerCallback playerCallback, Player player) {
+        Call<Player> callCreatePlayer = playerService.createPlayer(player, UserLoginManager.getInstance(context).getBearerToken());
+
+        callCreatePlayer.enqueue(new Callback<Player>() {
+            @Override
+            public void onResponse(Call<Player> call, Response<Player> response) {
+                System.out.println("CREATE PLAYER \n" +
+                        "Code: "+response.code()+"\n"
+                        +response.body());
+                System.out.println(response.raw().message());
+                playerCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Player> call, Throwable t) {
+                System.out.println("CREATE PLAYER --> ERROR \n"+ t.getMessage());
+            }
+        });
+    }
 }

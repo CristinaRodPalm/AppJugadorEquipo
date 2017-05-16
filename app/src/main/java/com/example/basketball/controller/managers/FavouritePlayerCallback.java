@@ -1,7 +1,6 @@
 package com.example.basketball.controller.managers;
 
 import com.example.basketball.model.FavouritePlayer;
-import com.example.basketball.model.Player;
 
 import java.util.List;
 

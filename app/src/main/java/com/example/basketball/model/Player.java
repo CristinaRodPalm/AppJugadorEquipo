@@ -31,6 +31,15 @@ public class Player {
         this.team = team;
     }
 
+    public Player(String name, String surname,Integer numBaskets, Integer numAssists, Integer numRebounds, Position position) {
+        this.name = name;
+        this.surname = surname;
+        this.numBaskets = numBaskets;
+        this.numAssists = numAssists;
+        this.numRebounds = numRebounds;
+        this.position = position;
+    }
+
     public Long getId() {
         return id;
     }

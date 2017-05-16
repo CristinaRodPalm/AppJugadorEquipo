@@ -1,7 +1,6 @@
 package com.example.basketball.controller.services;
 
 import com.example.basketball.model.FavouritePlayer;
-import com.example.basketball.model.Player;
 
 import java.util.List;
 
@@ -31,6 +30,12 @@ public interface FavouritePlayerService {
 
     @GET("/api/favourite-players")
     Call<FavouritePlayer> getFavouritePlayer(
+            @Path("id") Long id,
+            @Header("Authorization") String Authorization
+    );
+
+    @GET("/api/favourite-players/favExist/{id}")
+    Call<FavouritePlayer> getFavouritePlayerExists(
             @Path("id") Long id,
             @Header("Authorization") String Authorization
     );

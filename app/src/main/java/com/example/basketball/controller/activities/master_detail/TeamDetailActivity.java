@@ -10,13 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.basketball.R;
-import com.example.basketball.controller.managers.FavouritePlayerCallback;
-import com.example.basketball.controller.managers.FavouritePlayerManager;
-import com.example.basketball.controller.managers.PlayerManager;
 import com.example.basketball.controller.managers.TeamCallback;
 import com.example.basketball.controller.managers.TeamManager;
-import com.example.basketball.model.FavouritePlayer;
-import com.example.basketball.model.Player;
 import com.example.basketball.model.Team;
 
 import java.util.List;
