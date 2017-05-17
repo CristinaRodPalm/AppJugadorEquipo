@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.basketball.R;
+import com.example.basketball.controller.activities.CreatePlayer;
+import com.example.basketball.controller.activities.CreateTeam;
 import com.example.basketball.controller.activities.login.LoginActivity;
 import com.example.basketball.controller.managers.TeamCallback;
 import com.example.basketball.controller.managers.TeamManager;
@@ -37,7 +39,8 @@ public class TeamListActivity extends AppCompatActivity implements TeamCallback 
         addPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TeamManager.getInstance(getApplicationContext()).createTeam(TeamListActivity.this, new Team("Nuevo equipo", "japón"));
+                Intent i = new Intent(TeamListActivity.this, CreateTeam.class);
+                startActivity(i);
             }
         });
 

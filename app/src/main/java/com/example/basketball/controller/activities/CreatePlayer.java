@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.basketball.R;
+import com.example.basketball.controller.activities.main.MainActivity;
 import com.example.basketball.controller.activities.master_detail.PlayerListActivity;
 import com.example.basketball.controller.managers.PlayerCallback;
 import com.example.basketball.controller.managers.PlayerManager;
@@ -131,6 +132,6 @@ public class CreatePlayer extends AppCompatActivity implements PlayerCallback, T
     // ESTE SÍ -> INTENT PARA VOLVER A LA LISTA!!
     @Override
     public void onSuccess(Player player) {
-        startActivity(new Intent(CreatePlayer.this, PlayerListActivity.class));
+        startActivity(new Intent(CreatePlayer.this, MainActivity    .class));
     }
 }

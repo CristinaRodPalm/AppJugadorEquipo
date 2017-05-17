@@ -39,8 +39,8 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerCallb
         addPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Adding a new Player", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               /* Snackbar.make(view, "Adding a new Player", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
                 // ABRIMOS EL FORM PARA CREAR UN PLAYER
                 Intent i = new Intent(PlayerListActivity.this, CreatePlayer.class);
                 startActivity(i);

@@ -69,7 +69,6 @@ public class TeamManager {
             @Override
             public void onFailure(Call<List<Team>> call, Throwable t) {
                 Log.e("TeamManager->", "getAllTeams()->ERROR: " + t);
-
                 teamCallback.onFailure(t);
             }
         });
@@ -92,8 +91,8 @@ public class TeamManager {
                 int code = response.code();
 
                 if (code == 200 || code == 201) {
-                    Log.e("Team->","updateTeam: " + Integer.toString(code));
-
+                    Log.e("Team->","createTeam: " + Integer.toString(code));
+                    teamCallback.onSuccess(response.body());
                 } else {
                     teamCallback.onFailure(new Throwable("ERROR" + code + ", " + response.raw().message()));
                 }

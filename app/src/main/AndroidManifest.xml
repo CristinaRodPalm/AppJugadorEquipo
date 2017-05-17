@@ -19,13 +19,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".controller.activities.main.MainActivity" />
-
-        <activity
-            android:name=".controller.activities.master_detail.PlayerListActivity"
+        <activity android:name=".controller.activities.main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
+            android:name=".controller.activities.master_detail.PlayerListActivity"/>
+        <activity
+
             android:name=".controller.activities.master_detail.PlayerDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
@@ -35,7 +35,12 @@
 
         <activity
             android:name=".controller.activities.CreatePlayer"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme"
+            android:label="Crear jugador"/>
+        <activity
+            android:name=".controller.activities.CreateTeam"
+            android:theme="@style/AppTheme"
+            android:label="Crear equipo"/>
 
         <activity
             android:name=".controller.activities.master_detail.TeamDetailActivity"
