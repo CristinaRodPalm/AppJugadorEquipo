@@ -2,7 +2,6 @@ package com.example.basketball.controller.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -10,7 +9,6 @@ import android.widget.Button;
 
 import com.example.basketball.R;
 import com.example.basketball.controller.activities.main.MainActivity;
-import com.example.basketball.controller.activities.master_detail.TeamListActivity;
 import com.example.basketball.controller.managers.TeamCallback;
 import com.example.basketball.controller.managers.TeamManager;
 import com.example.basketball.model.Team;

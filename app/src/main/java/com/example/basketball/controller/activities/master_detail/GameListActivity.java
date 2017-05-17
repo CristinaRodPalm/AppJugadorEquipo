@@ -8,21 +8,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.basketball.R;
-import com.example.basketball.controller.activities.CreatePlayer;
-import com.example.basketball.controller.activities.login.LoginActivity;
 import com.example.basketball.controller.managers.GameCallback;
 import com.example.basketball.controller.managers.GameManager;
-import com.example.basketball.controller.managers.PlayerCallback;
-import com.example.basketball.controller.managers.PlayerManager;
 import com.example.basketball.model.Game;
-import com.example.basketball.model.Player;
 
 import java.util.List;
 

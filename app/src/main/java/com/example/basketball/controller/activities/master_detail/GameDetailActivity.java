@@ -1,25 +1,15 @@
 package com.example.basketball.controller.activities.master_detail;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.basketball.R;
-import com.example.basketball.controller.managers.FavouritePlayerCallback;
-import com.example.basketball.controller.managers.FavouritePlayerManager;
 import com.example.basketball.controller.managers.GameManager;
-import com.example.basketball.controller.managers.PlayerManager;
-import com.example.basketball.model.FavouritePlayer;
 import com.example.basketball.model.Game;
-import com.example.basketball.model.Player;
-
-import java.util.List;
 
 public class GameDetailActivity extends AppCompatActivity {
 

@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.basketball.R;
-import com.example.basketball.controller.activities.CreatePlayer;
 import com.example.basketball.controller.activities.CreateTeam;
 import com.example.basketball.controller.activities.login.LoginActivity;
 import com.example.basketball.controller.managers.TeamCallback;

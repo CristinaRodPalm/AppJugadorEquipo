@@ -2,12 +2,10 @@ package com.example.basketball.controller.activities.master_detail;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.basketball.R;
 import com.example.basketball.controller.managers.TeamCallback;
