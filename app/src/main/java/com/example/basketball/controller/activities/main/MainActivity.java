@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.TabHost;
 
 import com.example.basketball.R;
+import com.example.basketball.controller.activities.master_detail.GameListActivity;
 import com.example.basketball.controller.activities.master_detail.PlayerListActivity;
 import com.example.basketball.controller.activities.master_detail.TeamListActivity;
 import com.example.basketball.controller.managers.UserLoginManager;
@@ -30,6 +31,11 @@ public class MainActivity extends TabActivity  {
 
         intent = new Intent().setClass(this, TeamListActivity.class);
         spec = tabHost.newTabSpec("Teams").setIndicator("Teams")
+                .setContent(intent);
+        tabHost.addTab(spec);
+
+        intent = new Intent().setClass(this, GameListActivity.class);
+        spec = tabHost.newTabSpec("Games").setIndicator("Games")
                 .setContent(intent);
         tabHost.addTab(spec);
 

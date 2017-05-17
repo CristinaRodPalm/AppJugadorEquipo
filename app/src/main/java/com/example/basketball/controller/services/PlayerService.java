@@ -19,12 +19,14 @@ public interface PlayerService {
              */
             @Header("Authorization") String Authorization
     );
+/*
 
     @GET("/api/players")
     Call<Player> getPlayer(
             @Path("id") Long id,
             @Header("Authorization") String Authorization
     );
+*/
 
     @POST("/api/players")
     Call<Player> createPlayer(
