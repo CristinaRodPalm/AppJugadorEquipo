@@ -60,7 +60,7 @@ public class PlayerManager {
                 int code = response.code();
 
                 if (code == 200 || code == 201) {
-                    playerCallback.onSuccess(players);
+                    playerCallback.onSuccessList(players);
                 } else {
                     playerCallback.onFailure(new Throwable("ERROR" + code + ", " + response.raw().message()));
                 }

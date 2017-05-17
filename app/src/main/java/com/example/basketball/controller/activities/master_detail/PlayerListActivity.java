@@ -68,7 +68,7 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerCallb
 
     // Funciona el get
     @Override
-    public void onSuccess(List<Player> playerList) {
+    public void onSuccessList(List<Player> playerList) {
         players = playerList;
         setupRecyclerView(recyclerView);
     }
