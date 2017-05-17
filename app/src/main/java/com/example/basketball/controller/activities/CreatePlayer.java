@@ -30,8 +30,8 @@ import java.util.List;
 public class CreatePlayer extends AppCompatActivity implements PlayerCallback, TeamCallback {
 
     public Button crear;
-    public AutoCompleteTextView nombre, apellido, posicion, equipo;
-    public DatePicker nacimiento;
+    public AutoCompleteTextView nombre, apellido;
+    //public DatePicker nacimiento;
     public EditText canastas, asistencias, rebotes;
     public Spinner equipos, posiciones;
     String[] positions;
@@ -48,6 +48,11 @@ public class CreatePlayer extends AppCompatActivity implements PlayerCallback, T
         crear = (Button) findViewById(R.id.crear_jugador);
         equipos = (Spinner) findViewById(R.id.equipo);
         posiciones = (Spinner) findViewById(R.id.posicion);
+        nombre = (AutoCompleteTextView) findViewById(R.id.nombre);
+        apellido = (AutoCompleteTextView) findViewById(R.id.apellido);
+        canastas = (EditText) findViewById(R.id.canastas);
+        asistencias = (EditText) findViewById(R.id.asistencias);
+        rebotes = (EditText) findViewById(R.id.rebotes);
 
         positions = getNames(Position.class);
 
@@ -73,7 +78,12 @@ public class CreatePlayer extends AppCompatActivity implements PlayerCallback, T
         crear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Player p = new Player("Grace", "Villareal", 66, 28, 84, Position.BASE);
+                String name = nombre.getText().toString();
+                String surname = apellido.getText().toString();
+                int baskets = Integer.parseInt(canastas.getText().toString());
+                int assists = Integer.parseInt(asistencias.getText().toString());
+                int rebounds = Integer.parseInt(rebotes.getText().toString());
+                Player p = new Player(name, surname, baskets, assists, rebounds, posElegida, teamElegido);
                 PlayerManager.getInstance(getApplicationContext()).createPlayer(CreatePlayer.this, p);
             }
         });

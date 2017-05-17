@@ -31,13 +31,14 @@ public class Player {
         this.team = team;
     }
 
-    public Player(String name, String surname,Integer numBaskets, Integer numAssists, Integer numRebounds, Position position) {
+    public Player(String name, String surname,Integer numBaskets, Integer numAssists, Integer numRebounds, Position position, Team team) {
         this.name = name;
         this.surname = surname;
         this.numBaskets = numBaskets;
         this.numAssists = numAssists;
         this.numRebounds = numRebounds;
         this.position = position;
+        this.team = team;
     }
 
     public Long getId() {
