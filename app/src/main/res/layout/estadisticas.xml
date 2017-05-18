@@ -4,40 +4,6 @@
     android:layout_height="match_parent">
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Estadísticas por equipo"
-        android:id="@+id/button" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Estadísticas por jugador"
-        android:id="@+id/button2"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Top 10 jugadores con más canastas"
-        android:id="@+id/button3"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Top 10 jugadores con más rebotes"
-        android:id="@+id/button4"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Top 10 jugadores con más asistencias"
-        android:id="@+id/button5"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Top 5 jugadores más votados"

@@ -17,6 +17,7 @@ import com.example.basketball.controller.managers.FavouritePlayerManager;
 import com.example.basketball.controller.managers.PlayerManager;
 import com.example.basketball.model.FavouritePlayer;
 import com.example.basketball.model.Player;
+import com.example.basketball.model.PlayerDTO;
 
 import java.util.List;
 
@@ -118,5 +119,10 @@ public class PlayerDetailActivity extends AppCompatActivity implements Favourite
         Snackbar.make(fab, "Añadido a favoritos", Snackbar.LENGTH_LONG)
                 .setAction("", null).show();
         FavouritePlayerManager.getInstance(getApplicationContext()).getAllFavouritePlayer(PlayerDetailActivity.this);
+    }
+
+    @Override
+    public void onSuccessDTO(List<PlayerDTO> playerDTOList) {
+
     }
 }

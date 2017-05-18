@@ -13,19 +13,8 @@ import retrofit2.http.POST;
 public interface PlayerService {
     @GET("/api/players")
     Call<List<Player>> getAllPlayer(
-            /**
-             * "Bearer [space ]token"
-             */
             @Header("Authorization") String Authorization
     );
-/*
-
-    @GET("/api/players")
-    Call<Player> getPlayer(
-            @Path("id") Long id,
-            @Header("Authorization") String Authorization
-    );
-*/
 
     @POST("/api/players")
     Call<Player> createPlayer(

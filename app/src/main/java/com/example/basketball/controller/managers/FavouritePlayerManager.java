@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.basketball.controller.services.FavouritePlayerService;
 import com.example.basketball.model.FavouritePlayer;
+import com.example.basketball.model.PlayerDTO;
 import com.example.basketball.util.CustomProperties;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,6 +24,7 @@ public class FavouritePlayerManager {
     private Context context;
     private FavouritePlayerService favouritePlayerService;
     List<FavouritePlayer> favPlayers;
+    List<PlayerDTO> top5Players;
     private FavouritePlayerManager(Context cntxt) {
         context = cntxt;
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
@@ -99,6 +101,36 @@ public class FavouritePlayerManager {
             @Override
             public void onFailure(Call<List<FavouritePlayer>> call, Throwable t) {
                 Log.e("PlayerManager->", "getAllPlayers()->ERROR: " + t);
+
+                favouritePlayerCallback.onFailure(t);
+            }
+        });
+    }
+
+
+    public synchronized void getTop5Players(final FavouritePlayerCallback favouritePlayerCallback) {
+        Call<List<PlayerDTO>> callGetTop5players = favouritePlayerService.getTop5Player(UserLoginManager.getInstance(context).getBearerToken());
+
+
+        callGetTop5players.enqueue(new Callback<List<PlayerDTO>>() {
+            @Override
+            public void onResponse(Call<List<PlayerDTO>> call, Response<List<PlayerDTO>> response) {
+                System.out.println("GET ALL PLAYERS \n Code: " + response.code() + "\n"
+                        + response.body());
+
+                top5Players = response.body();
+                int code = response.code();
+
+                if (code == 200 || code == 201) {
+                    favouritePlayerCallback.onSuccessDTO(top5Players);
+                } else {
+                    favouritePlayerCallback.onFailure(new Throwable("ERROR" + code + ", " + response.raw().message()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PlayerDTO>> call, Throwable t) {
+                Log.e("PlayerManager->", "getTop5Players()->ERROR: " + t);
 
                 favouritePlayerCallback.onFailure(t);
             }

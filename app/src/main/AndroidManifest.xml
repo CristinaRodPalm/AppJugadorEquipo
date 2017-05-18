@@ -23,7 +23,9 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
-            android:name=".controller.activities.master_detail.PlayerListActivity"/>
+            android:name=".controller.activities.master_detail.PlayerListActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".controller.activities.master_detail.PlayerDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
@@ -34,8 +36,7 @@
 
         <activity
             android:name=".controller.activities.master_detail.TeamDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
             android:name=".controller.activities.master_detail.GameListActivity"
@@ -49,29 +50,20 @@
             android:name=".controller.activities.master_detail.FavPlayerListActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity
-            android:name=".controller.activities.CreatePlayer"
-            android:theme="@style/AppTheme"
-            android:label="Crear jugador"/>
-        <activity
-        android:name=".controller.activities.CreateTeam"
-        android:theme="@style/AppTheme"
-        android:label="Crear equipo"/>
-        <activity
-            android:name=".controller.activities.CreateGame"
-            android:theme="@style/AppTheme"
-            android:label="Crear partido"/>
+        <activity android:name=".controller.activities.CreatePlayer"
+            android:theme="@style/AppTheme" android:label="Crear jugador"/>
 
-        <activity
-            android:name=".controller.activities.Estadisticas"
-            android:theme="@style/AppTheme"
-            android:label="Estadísticas"/>
+        <activity android:name=".controller.activities.CreateTeam"
+            android:theme="@style/AppTheme" android:label="Crear equipo"/>
 
-        <activity
-            android:name=".controller.activities.Top5Votados"
-            android:theme="@style/AppTheme"
-            android:label="Jugadores + votados"/>
+        <activity android:name=".controller.activities.CreateGame"
+            android:theme="@style/AppTheme" android:label="Crear partido"/>
 
+        <activity android:name=".controller.activities.Estadisticas"
+            android:theme="@style/AppTheme" android:label="Estadísticas"/>
+
+        <activity android:name=".controller.activities.Top5Votados"
+            android:theme="@style/AppTheme" android:label="Jugadores + votados"/>
 
     </application>
 

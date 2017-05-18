@@ -9,17 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.basketball.R;
 import com.example.basketball.controller.managers.FavouritePlayerCallback;
 import com.example.basketball.controller.managers.FavouritePlayerManager;
-import com.example.basketball.controller.managers.PlayerManager;
 import com.example.basketball.model.FavouritePlayer;
-import com.example.basketball.model.Player;
+import com.example.basketball.model.PlayerDTO;
 
 import java.util.List;
 
@@ -64,6 +60,11 @@ public class FavPlayerListActivity extends AppCompatActivity implements Favourit
 
     @Override
     public void onSuccess() { }
+
+    @Override
+    public void onSuccessDTO(List<PlayerDTO> playerDTOList) {
+
+    }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(favPlayers));
