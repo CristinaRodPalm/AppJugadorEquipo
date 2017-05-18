@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -132,7 +131,7 @@ public class GameListActivity extends AppCompatActivity implements GameCallback 
                         GameDetailFragment fragment = new GameDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.game_detail_container, fragment)
+                                .replace(R.id.fav_detail_container, fragment)
                                 .commit();
 
                     } else {

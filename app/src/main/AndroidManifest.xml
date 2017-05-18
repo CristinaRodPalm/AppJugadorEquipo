@@ -43,8 +43,11 @@
 
         <activity
             android:name=".controller.activities.master_detail.GameDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".controller.activities.master_detail.FavPlayerListActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
             android:name=".controller.activities.CreatePlayer"
@@ -63,6 +66,11 @@
             android:name=".controller.activities.Estadisticas"
             android:theme="@style/AppTheme"
             android:label="Estadísticas"/>
+
+        <activity
+            android:name=".controller.activities.Top5Votados"
+            android:theme="@style/AppTheme"
+            android:label="Jugadores + votados"/>
 
 
     </application>

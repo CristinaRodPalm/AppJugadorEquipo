@@ -16,8 +16,7 @@ public class GameRating implements Serializable {
     private User user;
     private Game game;
 
-    public GameRating() {
-    }
+    public GameRating() {}
 
     public GameRating(Integer score, Date scoreDateTime, User user, Game game) {
         this.score = score;

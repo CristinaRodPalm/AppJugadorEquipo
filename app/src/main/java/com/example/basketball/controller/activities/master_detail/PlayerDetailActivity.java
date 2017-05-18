@@ -107,11 +107,10 @@ public class PlayerDetailActivity extends AppCompatActivity implements Favourite
     }
 
     @Override
-    public void onFailure(Throwable t) {    }
+    public void onFailure(Throwable t) {}
 
     @Override
-    public void onSuccess(FavouritePlayer favouritePlayer) {
-    }
+    public void onSuccess(FavouritePlayer favouritePlayer) {}
     @Override
     public void onSuccess() {
         Drawable d = getResources().getDrawable(android.R.drawable.star_big_on);

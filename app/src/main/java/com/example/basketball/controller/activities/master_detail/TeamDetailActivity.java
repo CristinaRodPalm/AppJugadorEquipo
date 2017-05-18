@@ -32,17 +32,6 @@ public class TeamDetailActivity extends AppCompatActivity implements TeamCallbac
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        /*// floating button para votar al player
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("Team votado");
-                *//*FavouritePlayerManager.getInstance(getApplicationContext()).
-                        createFavouritePlayer(TeamDetailActivity.this, new FavouritePlayer(player));*//*
-            }
-        });*/
-
         if (savedInstanceState == null) {
             Bundle arguments = new Bundle();
             arguments.putString(TeamDetailFragment.ARG_ITEM_ID,

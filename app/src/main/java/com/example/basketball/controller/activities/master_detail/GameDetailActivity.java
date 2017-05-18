@@ -2,11 +2,12 @@ package com.example.basketball.controller.activities.master_detail;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
 
 import com.example.basketball.R;
 import com.example.basketball.controller.managers.GameManager;
@@ -16,6 +17,7 @@ public class GameDetailActivity extends AppCompatActivity {
 
     public static String ARG_ITEM_ID = "item_id";
     public Game game;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,14 @@ public class GameDetailActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // crear un game rating
+            }
+        });
+
         if (savedInstanceState == null) {
             Bundle arguments = new Bundle();
             arguments.putString(GameDetailFragment.ARG_ITEM_ID,
@@ -39,7 +49,7 @@ public class GameDetailActivity extends AppCompatActivity {
             GameDetailFragment fragment = new GameDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.game_detail_container, fragment)
+                    .add(R.id.fav_detail_container, fragment)
                     .commit();
         }else{
             game = new Game();

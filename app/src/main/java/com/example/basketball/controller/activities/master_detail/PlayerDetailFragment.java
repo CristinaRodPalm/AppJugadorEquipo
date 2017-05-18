@@ -35,8 +35,6 @@ public class PlayerDetailFragment extends Fragment {
                 appBarLayout.setTitle(player.getName()+" "+player.getSurname());
             }
         }
-
-        //FavouritePlayerManager.getInstance(getContext()).getFavPlayerExists(PlayerDetailFragment.this, player.getId());
     }
 
     @Override
@@ -56,13 +54,6 @@ public class PlayerDetailFragment extends Fragment {
             rebotes.setText(player.getNumRebounds().toString());
             posicion.setText(player.getPosition().toString());
             equipo.setText(player.getTeam().getName().toString());
-            /*String text = "Baskets: " + player.getNumBaskets().toString() +
-                    "\nAssists: " + player.getNumAssists().toString()+
-                    "\nRebounds: " + player.getNumRebounds().toString()+
-                    "\nPosition: " + player.getPosition().toString().toLowerCase()+
-                    "\nTeam: " + player.getTeam().getName();
-            ((TextView) rootView.findViewById(R.id.player_detail)).
-                    setText(text);*/
         }
 
         return rootView;

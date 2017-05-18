@@ -3,11 +3,14 @@ package com.example.basketball.controller.activities.main;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.widget.TabHost;
 
 import com.example.basketball.R;
 import com.example.basketball.controller.activities.Estadisticas;
+import com.example.basketball.controller.activities.master_detail.FavPlayerListActivity;
 import com.example.basketball.controller.activities.master_detail.GameListActivity;
 import com.example.basketball.controller.activities.master_detail.PlayerListActivity;
 import com.example.basketball.controller.activities.master_detail.TeamListActivity;
@@ -37,6 +40,11 @@ public class MainActivity extends TabActivity  {
 
         intent = new Intent().setClass(this, GameListActivity.class);
         spec = tabHost.newTabSpec("Partidos").setIndicator("Partidos")
+                .setContent(intent);
+        tabHost.addTab(spec);
+
+        intent = new Intent().setClass(this, FavPlayerListActivity.class);
+        spec = tabHost.newTabSpec("Favoritos").setIndicator("Favoritos")
                 .setContent(intent);
         tabHost.addTab(spec);
 

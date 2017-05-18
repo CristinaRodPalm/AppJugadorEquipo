@@ -23,8 +23,6 @@ public class FavouritePlayerManager {
     private Context context;
     private FavouritePlayerService favouritePlayerService;
     List<FavouritePlayer> favPlayers;
-    FavouritePlayer favPlayer;
-
     private FavouritePlayerManager(Context cntxt) {
         context = cntxt;
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
@@ -80,32 +78,6 @@ public class FavouritePlayerManager {
         return null;
     }
 
-    public synchronized void getFavPlayerExists(final FavouritePlayerCallback favouritePlayerCallback, Long id){
-        Call<FavouritePlayer> callFavPlayerExists =
-                favouritePlayerService.getFavouritePlayerExists(id, UserLoginManager.getInstance(context).getBearerToken());
-        callFavPlayerExists.enqueue(new Callback<FavouritePlayer>() {
-            @Override
-            public void onResponse(Call<FavouritePlayer> call, Response<FavouritePlayer> response) {
-                int code = response.code();
-
-                if (code == 200 || code == 201) {
-                    System.out.println("!!!!!!!!!!MANAGER!!!!!!!!!!!!! ->  " + favPlayer);
-                    favouritePlayerCallback.onSuccess(favPlayer);
-                } else {
-                    favouritePlayerCallback.onFailure(new Throwable("ERROR" + code + ", " + response.raw().message()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<FavouritePlayer> call, Throwable t) {
-                Log.e("PlayerManager->", "getFavPlayerExists()->ERROR: " + t);
-
-                favouritePlayerCallback.onFailure(t);
-            }
-        });
-    }
-
-
     public synchronized void getAllFavouritePlayer(final FavouritePlayerCallback favouritePlayerCallback) {
         Call<List<FavouritePlayer>> callGetAll = favouritePlayerService.getAllFavouritePlayer(UserLoginManager.getInstance(context).getBearerToken());
 
@@ -115,9 +87,10 @@ public class FavouritePlayerManager {
                 System.out.println("GET ALL FAV PLAYERS \n Code: " + response.code() + "\n"
                         + response.body());
                 int code = response.code();
+                favPlayers = response.body();
 
                 if (code == 200 || code == 201) {
-                    favouritePlayerCallback.onSuccess(response.body());
+                    favouritePlayerCallback.onSuccess(favPlayers);
                 } else {
                     favouritePlayerCallback.onFailure(new Throwable("ERROR" + code + ", " + response.raw().message()));
                 }
