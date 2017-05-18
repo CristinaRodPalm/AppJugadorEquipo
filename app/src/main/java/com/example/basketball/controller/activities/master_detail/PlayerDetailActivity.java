@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -40,26 +41,8 @@ public class PlayerDetailActivity extends AppCompatActivity implements Favourite
 
         // floating button para votar al player
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FavouritePlayerManager.getInstance(getApplicationContext()).
-                        createFavouritePlayer(PlayerDetailActivity.this, new FavouritePlayer(player));
-            }
-        });
 
-        // savedInstanceState is non-null when there is fragment state
-        // saved from previous configurations of this activity
-        // (e.g. when rotating the screen from portrait to landscape).
-        // In this case, the fragment will automatically be re-added
-        // to its container so we don't need to manually add it.
-        // For more information, see the Fragments API guide at:
-        //
-        // http://developer.android.com/guide/components/fragments.html
-        //
         if (savedInstanceState == null) {
-            // Create the detail fragment and add it to the activity
-            // using a fragment transaction.
             Bundle arguments = new Bundle();
             arguments.putString(PlayerDetailFragment.ARG_ITEM_ID,
                     getIntent().getStringExtra(PlayerDetailFragment.ARG_ITEM_ID));
@@ -73,46 +56,68 @@ public class PlayerDetailActivity extends AppCompatActivity implements Favourite
             player = new Player();
         }
 
-        FavouritePlayerManager.getInstance(getApplicationContext()).
-                getFavPlayerExists(PlayerDetailActivity.this, player.getId());
+        FavouritePlayerManager.getInstance(getApplicationContext()).getAllFavouritePlayer(PlayerDetailActivity.this);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            // This ID represents the Home or Up button. In the case of this
-            // activity, the Up button is shown. For
-            // more details, see the Navigation pattern on Android Design:
-            //
-            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            //
             navigateUpTo(new Intent(this, PlayerListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
-    public void onSuccess(List<FavouritePlayer> playerList) {}
+    public void onSuccess(List<FavouritePlayer> playerList) {
+        System.out.println("plist: "+playerList);
+        boolean existe = false;
+        for(FavouritePlayer fav: playerList){
+            if(fav.getPlayer().getId() == player.getId()){
+                existe = true;
+                break;
+            }
+        }
+        if(existe){
+            Drawable d = getResources().getDrawable(android.R.drawable.star_big_on);
+            fab.setImageDrawable(d);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // ya está votado -> quitar el voto????
+                     Snackbar.make(view, "Ya tienes a éste jugador en favoritos", Snackbar.LENGTH_LONG)
+                        .setAction("", null).show();
+                }
+            });
 
-    @Override
-    public void onFailure(Throwable t) {
-        System.out.println("!!!!!!!!! falla" +t);
+        }else{
+            Drawable d = getResources().getDrawable(android.R.drawable.star_big_off);
+            fab.setImageDrawable(d);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Se vota!!
+                    FavouritePlayerManager.getInstance(getApplicationContext()).
+                            createFavouritePlayer(PlayerDetailActivity.this, new FavouritePlayer(player));
+
+                }
+            });
+        }
     }
+
+    @Override
+    public void onFailure(Throwable t) {    }
 
     @Override
     public void onSuccess(FavouritePlayer favouritePlayer) {
-        // SI ESTÁ VOTADO
-        System.out.println(favouritePlayer);
-        if(favouritePlayer != null){
-            Drawable d = getResources().getDrawable(android.R.drawable.star_big_on);
-            fab.setImageDrawable(d);
-        }
     }
     @Override
     public void onSuccess() {
-        System.out.println("HA FUNCIONADO EL CREATE FAVOURITE");
+        Drawable d = getResources().getDrawable(android.R.drawable.star_big_on);
+        fab.setImageDrawable(d);
+        Snackbar.make(fab, "Añadido a favoritos", Snackbar.LENGTH_LONG)
+                .setAction("", null).show();
+        FavouritePlayerManager.getInstance(getApplicationContext()).getAllFavouritePlayer(PlayerDetailActivity.this);
     }
 }

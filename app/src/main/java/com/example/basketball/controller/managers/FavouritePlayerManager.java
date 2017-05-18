@@ -117,7 +117,7 @@ public class FavouritePlayerManager {
                 int code = response.code();
 
                 if (code == 200 || code == 201) {
-                    favouritePlayerCallback.onSuccess(favPlayers);
+                    favouritePlayerCallback.onSuccess(response.body());
                 } else {
                     favouritePlayerCallback.onFailure(new Throwable("ERROR" + code + ", " + response.raw().message()));
                 }

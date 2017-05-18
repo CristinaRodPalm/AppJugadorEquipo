@@ -28,12 +28,6 @@ public interface FavouritePlayerService {
             @Header("Authorization") String Authorization
     );
 
-    @GET("/api/favourite-players")
-    Call<FavouritePlayer> getFavouritePlayer(
-            @Path("id") Long id,
-            @Header("Authorization") String Authorization
-    );
-
     @GET("/api/favourite-players/favExist/{id}")
     Call<FavouritePlayer> getFavouritePlayerExists(
             @Path("id") Long id,
