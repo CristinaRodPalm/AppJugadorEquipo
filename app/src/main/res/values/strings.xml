@@ -10,11 +10,14 @@
     <string name="prompt_rebotes">Rebotes</string>
     <string name="prompt_posicion">Posicion</string>
     <string name="prompt_equipo">Equipo</string>
+    <string name="prompt_localScore">Puntos equipo local</string>
+    <string name="prompt_visitorScore">Puntos equipo visitante</string>
 
     <string name="prompt_city">Ciudad</string>
 
     <string name="btn_crear_jugador">Crear jugador</string>
     <string name="btn_crear_equipo">Crear equipo</string>
+    <string name="btn_crear_partido">Crear partido</string>
 
     <string name="action_log_in">Log in</string>
     <string name="error_invalid_password">Constraseña demasiado corta</string>

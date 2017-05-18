@@ -8,9 +8,9 @@ import java.util.List;
  * Created by User on 17/05/2017.
  */
 public interface GameCallback {
-    void onSuccessList(List<Game> playerList);
+    void onSuccessList(List<Game> gamesList);
 
     void onFailure(Throwable t);
 
-    void onSuccess(Game player);
+    void onSuccess(Game game);
 }

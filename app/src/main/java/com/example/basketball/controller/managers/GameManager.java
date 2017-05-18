@@ -58,7 +58,6 @@ public class GameManager {
         return null;
     }
 
-
     public synchronized void getAllGames(final GameCallback gameCallback) {
         Call<List<Game>> callGetAll = gameService.getAllGames(UserLoginManager.getInstance(context).getBearerToken());
 
@@ -83,6 +82,26 @@ public class GameManager {
                 Log.e("PlayerManager->", "getAllPlayers()->ERROR: " + t);
 
                 gameCallback.onFailure(t);
+            }
+        });
+    }
+
+    public synchronized void createGame(final GameCallback gameCallback, Game game){
+        Call<Game> callCreateGame = gameService.createGame(game, UserLoginManager.getInstance(context).getBearerToken());
+
+        callCreateGame.enqueue(new Callback<Game>() {
+            @Override
+            public void onResponse(Call<Game> call, Response<Game> response) {
+                System.out.println("CREATE GAME \n" +
+                        "Code: "+response.code()+"\n"
+                        +response.body());
+                System.out.println(response.raw().message());
+                gameCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Game> call, Throwable t) {
+                System.out.println("CREATE GAME --> ERROR \n" + t.getMessage());
             }
         });
     }

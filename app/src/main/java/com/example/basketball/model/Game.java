@@ -41,6 +41,14 @@ public class Game implements Serializable {
         this.visitorScore = visitorScore;
     }
 
+    public Game(String name, Integer localScore, Integer visitorScore, Team gameLocalTeam, Team gameVisitorTeam) {
+        this.name = name;
+        this.localScore = localScore;
+        this.visitorScore = visitorScore;
+        this.gameLocalTeam = gameLocalTeam;
+        this.gameVisitorTeam = gameVisitorTeam;
+    }
+
     public Long getId() {
         return id;
     }

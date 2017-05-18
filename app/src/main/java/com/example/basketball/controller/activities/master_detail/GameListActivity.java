@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.basketball.R;
+import com.example.basketball.controller.activities.CreateGame;
 import com.example.basketball.controller.managers.GameCallback;
 import com.example.basketball.controller.managers.GameManager;
 import com.example.basketball.model.Game;
@@ -36,10 +37,10 @@ public class GameListActivity extends AppCompatActivity implements GameCallback 
         addPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Snackbar.make(view, "Add game", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-               /* Intent i = new Intent(PlayerListActivity.this, CreatePlayer.class);
-                startActivity(i);*/
+               /*Snackbar.make(view, "Add game", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+               Intent i = new Intent(GameListActivity.this, CreateGame.class);
+                startActivity(i);
             }
         });
 
@@ -69,9 +70,6 @@ public class GameListActivity extends AppCompatActivity implements GameCallback 
 
     @Override
     public void onSuccess(Game player) {}
-
-
-
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(games));

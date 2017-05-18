@@ -51,10 +51,13 @@
             android:theme="@style/AppTheme"
             android:label="Crear jugador"/>
         <activity
-            android:name=".controller.activities.CreateTeam"
+        android:name=".controller.activities.CreateTeam"
+        android:theme="@style/AppTheme"
+        android:label="Crear equipo"/>
+        <activity
+            android:name=".controller.activities.CreateGame"
             android:theme="@style/AppTheme"
-            android:label="Crear equipo"/>
-
+            android:label="Crear partido"/>
 
 
     </application>

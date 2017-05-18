@@ -5,8 +5,10 @@ import com.example.basketball.model.Game;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -18,9 +20,9 @@ public interface GameService {
             @Header("Authorization") String Authorization
     );
 
-    @GET("/api/games/{id}")
-    Call<Game> getGame(
-            @Path("id") Long id,
-            @Header("Authorization") String Authorization
-    );
+    @POST("/api/games")
+    Call<Game> createGame(
+            @Body Game game,
+            @Header("Authorization") String Authorization);
+
 }
