@@ -17,6 +17,7 @@ public class PlayerDetailFragment extends Fragment {
 
     public static String ARG_ITEM_ID = "item_id";
     private Player player;
+    public TextView canastas, asistencias, rebotes, posicion, equipo;
 
     public PlayerDetailFragment() {}
 
@@ -43,15 +44,25 @@ public class PlayerDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.player_detail, container, false);
 
+        canastas = (TextView) rootView.findViewById(R.id.canastas);
+        asistencias = (TextView) rootView.findViewById(R.id.asistencias);
+        rebotes = (TextView) rootView.findViewById(R.id.rebotes);
+        posicion = (TextView) rootView.findViewById(R.id.posicion);
+        equipo = (TextView) rootView.findViewById(R.id.equipo);
 
         if (player != null) {
-            String text = "Baskets: " + player.getNumBaskets().toString() +
+            canastas.setText(player.getNumBaskets().toString());
+            asistencias.setText(player.getNumAssists().toString());
+            rebotes.setText(player.getNumRebounds().toString());
+            posicion.setText(player.getPosition().toString());
+            equipo.setText(player.getTeam().getName().toString());
+            /*String text = "Baskets: " + player.getNumBaskets().toString() +
                     "\nAssists: " + player.getNumAssists().toString()+
                     "\nRebounds: " + player.getNumRebounds().toString()+
                     "\nPosition: " + player.getPosition().toString().toLowerCase()+
                     "\nTeam: " + player.getTeam().getName();
             ((TextView) rootView.findViewById(R.id.player_detail)).
-                    setText(text);
+                    setText(text);*/
         }
 
         return rootView;

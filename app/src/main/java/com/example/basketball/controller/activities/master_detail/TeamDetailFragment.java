@@ -42,7 +42,8 @@ public class TeamDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.team_detail, container, false);
 
         if (team != null) {
-            ((TextView) rootView.findViewById(R.id.team_detail)).setText("City: " + team.getCity().toString());
+            //((TextView) rootView.findViewById(R.id.team_detail)).setText("City: " + team.getCity().toString());
+            ((TextView) rootView.findViewById(R.id.ciudad)).setText(team.getCity().toString());
         }
 
         return rootView;

@@ -17,6 +17,7 @@ public class GameDetailFragment extends Fragment {
 
     public static String ARG_ITEM_ID = "item_id";
     private Game game;
+    public TextView localEq, visitanteEq, localPunt, visitantePunt;
 
     public GameDetailFragment() {}
 
@@ -42,7 +43,18 @@ public class GameDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.game_detail, container, false);
 
         if (game != null) {
-            ((TextView) rootView.findViewById(R.id.game_detail)).setText("Nombre: " + game.getName().toString());
+
+            localEq = (TextView) rootView.findViewById(R.id.localEq);
+            visitanteEq = (TextView) rootView.findViewById(R.id.visitanteEq);
+            localPunt = (TextView) rootView.findViewById(R.id.localPunt);
+            visitantePunt = (TextView) rootView.findViewById(R.id.visitantePunt);
+
+            //((TextView) rootView.findViewById(R.id.game_detail)).setText("Nombre: " + game.getName().toString());
+
+            localEq.setText(game.getGameLocalTeam().getName().toString());
+            visitanteEq.setText(game.getGameVisitorTeam().getName().toString());
+            localPunt.setText(game.getLocalScore().toString());
+            visitantePunt.setText(game.getVisitorScore().toString());
         }
 
         return rootView;
