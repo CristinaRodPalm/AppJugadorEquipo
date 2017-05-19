@@ -10,7 +10,7 @@ import com.example.basketball.R;
 
 public class Estadisticas extends AppCompatActivity {
 
-    public Button top5masvotados;
+    public Button top5masvotados, jugByPosicion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,13 @@ public class Estadisticas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Estadisticas.this, Top5Votados.class));
+            }
+        });
+        jugByPosicion = (Button) findViewById(R.id.jugByPosicion);
+        jugByPosicion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Estadisticas.this, PlayersByPosicion.class));
             }
         });
 

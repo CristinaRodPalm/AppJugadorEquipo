@@ -1,6 +1,7 @@
 package com.example.basketball.controller.services;
 
 import com.example.basketball.model.Player;
+import com.example.basketball.model.Position;
 
 import java.util.List;
 
@@ -21,4 +22,10 @@ public interface PlayerService {
             @Body Player player,
             @Header("Authorization") String Authorization
     );
+/*
+    @GET("/api/playersByPosition")
+    Call<List<Player>> getAllByPosition(
+            @Body Position pos,
+            @Header("Authorization") String Authorization
+    );*/
 }

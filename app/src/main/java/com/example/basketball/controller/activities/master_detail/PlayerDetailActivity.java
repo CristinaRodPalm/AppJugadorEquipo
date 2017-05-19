@@ -74,8 +74,8 @@ public class PlayerDetailActivity extends AppCompatActivity implements Favourite
     public void onSuccess(List<FavouritePlayer> playerList) {
         System.out.println("plist: "+playerList);
         boolean existe = false;
-        for(FavouritePlayer fav: playerList){
-            if(fav.getPlayer().getId() == player.getId()){
+            for(FavouritePlayer fav: playerList){
+                if(fav.getPlayer().getId() == player.getId()){
                 existe = true;
                 break;
             }

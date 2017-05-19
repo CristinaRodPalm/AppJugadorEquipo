@@ -5,10 +5,12 @@ import android.util.Log;
 
 import com.example.basketball.controller.services.PlayerService;
 import com.example.basketball.model.Player;
+import com.example.basketball.model.Position;
 import com.example.basketball.util.CustomProperties;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -81,7 +83,6 @@ public class PlayerManager {
                 return player;
             }
         }
-
         return null;
     }
 
@@ -103,5 +104,17 @@ public class PlayerManager {
                 System.out.println("CREATE PLAYER --> ERROR \n"+ t.getMessage());
             }
         });
+    }
+
+    public List<Player> getAllByPosition(Position pos){
+        List<Player> playersByPosition = new ArrayList<>();
+        for(Player player : players){
+            if(player.getPosition() == pos){
+                playersByPosition.add(player);
+            }
+        }
+        System.out.println("AJAAAAAAA "+pos);
+        System.out.println(playersByPosition);
+        return playersByPosition;
     }
 }

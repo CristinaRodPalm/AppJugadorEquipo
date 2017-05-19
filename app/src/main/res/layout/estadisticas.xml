@@ -9,4 +9,11 @@
         android:text="Top 5 jugadores más votados"
         android:id="@+id/top5masvotados"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jugadores por posición"
+        android:id="@+id/jugByPosicion"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
