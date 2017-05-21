@@ -129,6 +129,9 @@ public class CreatePlayer extends AppCompatActivity implements PlayerCallback, T
     // ESTE SÍ -> INTENT PARA VOLVER A LA LISTA!!
     @Override
     public void onSuccess(Player player) {
-        startActivity(new Intent(CreatePlayer.this, MainActivity    .class));
+        Intent main = new Intent(CreatePlayer.this, MainActivity.class);
+        main.putExtra("tab", "players");
+        startActivity(main);
+        /*startActivity(new Intent(CreatePlayer.this, MainActivity.class));*/
     }
 }

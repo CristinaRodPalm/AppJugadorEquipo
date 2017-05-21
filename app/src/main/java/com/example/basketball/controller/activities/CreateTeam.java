@@ -58,7 +58,10 @@ public class CreateTeam extends AppCompatActivity implements TeamCallback{
         b.putString("condition","tab2");
         go.putExtras(b);
         startActivity(go);*/
-        startActivity(new Intent(CreateTeam.this, MainActivity.class));
+        Intent main = new Intent(CreateTeam.this, MainActivity.class);
+        main.putExtra("tab", "teams");
+        startActivity(main);
+       // startActivity(new Intent(CreateTeam.this, MainActivity.class));
         // redirigir a tab2
 
     }

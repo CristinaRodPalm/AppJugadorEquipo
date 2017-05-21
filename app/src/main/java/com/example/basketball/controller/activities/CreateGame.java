@@ -67,9 +67,9 @@ public class CreateGame extends AppCompatActivity implements GameCallback, TeamC
         teamArray = teamList;
         for (Team team : teamList) {
             teams.add(team.getName());
-        }
-        ArrayAdapter localAdapter = new ArrayAdapter<String>(this,
+        }ArrayAdapter localAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, teams);
+
         ArrayAdapter visitorAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, teams);
         localTeam.setAdapter(localAdapter);visitorTeam.setAdapter(visitorAdapter);
@@ -113,7 +113,9 @@ public class CreateGame extends AppCompatActivity implements GameCallback, TeamC
     // Y ESTE SI SE CONSIGUE CREAR EL GAME
     @Override
     public void onSuccess(Game game) {
-        startActivity(new Intent(CreateGame.this, MainActivity.class));
-        // redirigir a tab3
+        Intent main = new Intent(CreateGame.this, MainActivity.class);
+        main.putExtra("tab", "games");
+        startActivity(main);
+        /*startActivity(new Intent(CreateGame.this, MainActivity.class));*/
     }
 }

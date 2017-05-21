@@ -51,6 +51,20 @@ public class MainActivity extends TabActivity  {
                 .setContent(intent);
         tabHost.addTab(spec);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            switch(extras.getString("tab")){
+                case "players":
+                    tabHost.setCurrentTab(0);
+                    break;
+                case "teams":
+                    tabHost.setCurrentTab(1);
+                    break;
+                case "games":
+                    tabHost.setCurrentTab(2);
+                    break;
+            }
+        }
     }
 
     @Override
