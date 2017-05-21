@@ -7,6 +7,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.basketball.R;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Estadisticas extends AppCompatActivity {
 
@@ -31,6 +38,24 @@ public class Estadisticas extends AppCompatActivity {
                 startActivity(new Intent(Estadisticas.this, PlayersByPosicion.class));
             }
         });
+
+        // GRÁFICO
+        //https://github.com/PhilJay/MPAndroidChart/wiki/Getting-Started
+        LineChart chart = (LineChart) findViewById(R.id.chart);
+
+        int[] data = {1, 4, 2, 5, 9};
+        List<Entry> entries = new ArrayList<Entry>();
+
+        for(int d: data){
+            entries.add(new Entry(d, d));
+        }
+
+        LineDataSet lineDataSet = new LineDataSet(entries, "label");
+        lineDataSet.setColor(336);
+        LineData lineData = new LineData(lineDataSet);
+        chart.setData(lineData);
+        chart.invalidate();
+
 
     }
 }
